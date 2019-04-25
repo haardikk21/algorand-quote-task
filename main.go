@@ -116,8 +116,16 @@ func main() {
 		return
 	}
 
+	// Get suggested fee from algod
+	feeResponse, err := algodClient.SuggestedFee()
+	if err != nil {
+		fmt.Printf("error getting suggested fee: %s\n", err)
+	}
+
+	suggestedFee := feeResponse.Fee
+
 	// Make the transaction
-	tx, err := transaction.MakePaymentTxn(walletAddress, toAddress, 500, amount, txParams.LastRound, txParams.LastRound+10, note, "", txParams.GenesisID)
+	tx, err := transaction.MakePaymentTxn(walletAddress, toAddress, suggestedFee, amount, txParams.LastRound, txParams.LastRound+10, note, "", txParams.GenesisID)
 	if err != nil {
 		fmt.Printf("error creating transaction: %s\n", err)
 		return
