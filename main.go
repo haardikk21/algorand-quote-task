@@ -120,6 +120,7 @@ func main() {
 	feeResponse, err := algodClient.SuggestedFee()
 	if err != nil {
 		fmt.Printf("error getting suggested fee: %s\n", err)
+		return
 	}
 
 	suggestedFee := feeResponse.Fee
