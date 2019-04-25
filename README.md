@@ -13,3 +13,5 @@ cd kmd-v0.5
 export KMD_ADDRESS=$(cat kmd.net)
 export KMD_TOKEN=$(cat kmd.token)
 ```
+
+**NOTE**: If your `ALGOD_ADDRESS` and `KMD_ADDRESS` get set to `127.0.0.1:port`, you should change them to `http://localhost:port` as Go SDK doesn't seem to like parsing the former.
