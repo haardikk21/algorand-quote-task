@@ -21,7 +21,7 @@ var (
 	kmdToken              = os.Getenv("KMD_TOKEN")
 	note                  = []byte("Easy choices, hard life. Hard choices, easy life.") // Note to attach to transaction
 	amount         uint64 = 1000                                                        // amount to send
-	walletName            = "testwallet2"
+	walletName            = "testwallet"
 	walletPassword        = "testpassword"
 )
 
@@ -117,7 +117,7 @@ func main() {
 	}
 
 	// Make the transaction
-	tx, err := transaction.MakePaymentTxn(walletAddress, toAddress, 1, amount, txParams.LastRound-1, txParams.LastRound, note, "", txParams.GenesisID)
+	tx, err := transaction.MakePaymentTxn(walletAddress, toAddress, 500, amount, txParams.LastRound, txParams.LastRound+10, note, "", txParams.GenesisID)
 	if err != nil {
 		fmt.Printf("error creating transaction: %s\n", err)
 		return
